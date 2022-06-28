@@ -4,13 +4,13 @@
     width: 100%;
     color: rgb(0, 0, 0);
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+    margin: auto;
 }
-h1
-{
+#level-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    margin:  3%;
+    color: #FEF2BF;
     text-shadow: 10px 0 #161616;
 }
 .btn 
@@ -22,10 +22,7 @@ h1
     border-radius: 5%;
     box-shadow: rgb(0, 0, 0);
 }
-#one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #ten, #eleven, #twelve, #thirteen, #fourteen, #fifteen, #sixteen
-{
-    color: rgb(128, 128, 128);
-}
+
 body
 {
     text-align: center;
@@ -46,13 +43,7 @@ body
 .pressed {
     box-shadow: 0 0 20px white;
     background-color: grey;
-  }
-  #level-title {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 3rem;
-    margin:  5%;
-    color: #FEF2BF;
-  }
+}
   .game-over {
     background-color: red;
     opacity: 0.8;
