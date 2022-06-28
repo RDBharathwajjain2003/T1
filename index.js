@@ -1,31 +1,26 @@
-var buttonColours = ["rgb(43, 43, 43)", "rgb(185, 179, 179)"];
+var buttonColours = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen"];
 var gamePattern = [];
 var userClickedPattern = [];
-
 var started = false;
 var level = 0;
-
 $(document).keypress(function() {
-  if (!started) {
-    $("#level-title").text("Level " + level);
-    nextSequence();
-    started = true;
-  }
-});
+    if (!started) {
+      $("#level-title").text("Level " + level);
+      nextSequence();
+      started = true;
+    }
+  });
+  $(".btn").click(function() {
 
-$(".btn").click(function() {
-
-  var userChosenColour = $(this).attr("id");
-  userClickedPattern.push(userChosenColour);
-
-  playSound(userChosenColour);
-  animatePress(userChosenColour);
-
-  checkAnswer(userClickedPattern.length-1);
-});
-
-
-function checkAnswer(currentLevel) {
+    var userChosenColour = $(this).attr("id");
+    userClickedPattern.push(userChosenColour);
+  
+    playSound(userChosenColour);
+    animatePress(userChosenColour);
+  
+    checkAnswer(userClickedPattern.length-1);
+  });
+  function checkAnswer(currentLevel) {
 
     if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
 
@@ -55,40 +50,37 @@ function checkAnswer(currentLevel) {
     }
 
 }
-
 function nextSequence() {
 
-  userClickedPattern = [];
-  level++;
-  $("#level-title").text("Level " + level);
-
-  var randomNumber = Math.floor(Math.random() * 16);
-  var randomChosenColour = buttonColours[randomNumber];
-  gamePattern.push(randomChosenColour);
-
-  $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
-  playSound(randomChosenColour);
-}
-
-function playSound(name) {
-  var audio = new Audio("music-2.mp3");
-  audio.play();
-}
-
-function animatePress(currentColor) {
-  $("#" + currentColor).addClass("pressed");
-  setTimeout(function () {
-    $("#" + currentColor).removeClass("pressed");
-  }, 100);
-}
-
-//1. Create a new function called startOver().
-function startOver() {
-
-  //3. Inside this function, you'll need to reset the values of level, gamePattern and started variables.
-  level = 0;
-  gamePattern = [];
-  started = false;
-}
-
-
+    userClickedPattern = [];
+    level++;
+    $("#level-title").text("Level " + level);
+  
+    var randomNumber = Math.floor(Math.random() * 16);
+    var randomChosenColour = buttonColours[randomNumber];
+    gamePattern.push(randomChosenColour);
+  
+    $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
+    playSound(randomChosenColour);
+  }
+  
+  function playSound(randomChosenColour) {
+    var audio = new Audio("music.mp3");
+    audio.play();
+  }
+  
+  function animatePress(currentColor) {
+    $("#" + currentColor).addClass("pressed");
+    setTimeout(function () {
+      $("#" + currentColor).removeClass("pressed");
+    }, 100);
+  }
+  
+  //1. Create a new function called startOver().
+  function startOver() {
+  
+    //3. Inside this function, you'll need to reset the values of level, gamePattern and started variables.
+    level = 0;
+    gamePattern = [];
+    started = false;
+  }
